@@ -77,11 +77,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Função para finalizar o jogo
     function endGame() {
+        // Verifica se o jogo já foi finalizado, para não executar a lógica novamente
+        if (!gameRunning) return;
+
         gameRunning = false;
         clearInterval(obstacleInterval);
         gameOverScreen.style.display = 'block';
         gameOverSound.play(); // Tocar som de game over
         backgroundMusic.pause(); // Parar a música de fundo quando o jogo acabar
+
+        // Interromper as animações dos obstáculos
+        obstacles.forEach(obstacle => {
+            obstacle.style.animationPlayState = 'paused'; // Pausa a animação
+        });
 
         // Salvar a pontuação final e verificar se é um novo recorde
         if (score > highScore) {
