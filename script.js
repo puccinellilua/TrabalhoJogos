@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const restartBtn = document.getElementById('restartBtn');
     const gameOverScreen = document.getElementById('gameOverScreen');
     const scoreElement = document.getElementById('score');
+    const recordElement = document.getElementById('record');
     const backgroundMusic = document.getElementById('backgroundMusic'); // Música de fundo
 
     let score = 0;
@@ -15,6 +16,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Sons
     const jumpSound = new Audio('jump.mp3');
     const gameOverSound = new Audio('gameOver.mp3');
+
+    // Recuperar recorde do localStorage (se existir)
+    let highScore = localStorage.getItem('highScore');
+    if (!highScore) {
+        highScore = 0; // Se não houver recorde salvo, definimos como 0
+    }
+    recordElement.textContent = `Recorde: ${highScore}`;
 
     // Função para iniciar o jogo
     function startGame() {
@@ -74,6 +82,14 @@ document.addEventListener("DOMContentLoaded", function() {
         gameOverScreen.style.display = 'block';
         gameOverSound.play(); // Tocar som de game over
         backgroundMusic.pause(); // Parar a música de fundo quando o jogo acabar
+
+        // Salvar a pontuação final e verificar se é um novo recorde
+        if (score > highScore) {
+            highScore = score; // Atualiza o recorde
+            localStorage.setItem('highScore', highScore); // Salva o novo recorde no localStorage
+        }
+
+        recordElement.textContent = `Recorde: ${highScore}`; // Exibir o recorde atualizado
     }
 
     // Função de pulo
