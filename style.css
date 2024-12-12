@@ -1,11 +1,9 @@
-/* Reset de margens e padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilo geral do corpo */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -15,7 +13,6 @@ body {
     height: 100vh;
 }
 
-/* Container principal do jogo */
 .game-container {
     width: 80%;
     height: 80%;
@@ -24,7 +21,6 @@ body {
     background-color: #e0e0e0;
 }
 
-/* Informações do jogo (botão e pontuação) */
 .game-info {
     position: absolute;
     top: 10px;
@@ -33,11 +29,10 @@ body {
     z-index: 10;
 }
 
-#score {
+#score, #record {
     font-size: 20px;
 }
 
-/* Área onde o jogador e os obstáculos vão aparecer */
 #gameArea {
     position: relative;
     width: 100%;
@@ -46,7 +41,6 @@ body {
     background-color: #d3d3d3;
 }
 
-/* Estilo do jogador */
 #player {
     width: 50px;
     height: 50px;
@@ -56,7 +50,6 @@ body {
     left: 50px;
 }
 
-/* Estilo dos obstáculos */
 .obstacle {
     width: 50px;
     height: 50px;
@@ -64,19 +57,18 @@ body {
     position: absolute;
     bottom: 0;
     right: -50px; /* Inicialmente fora da tela */
-    animation: moveObstacle 3s linear infinite; /* Movimento do obstáculo */
+    animation: moveObstacle 3s linear infinite;
 }
 
 @keyframes moveObstacle {
     0% {
-        right: -50px; /* Obstáculo começa fora da tela à direita */
+        right: -50px;
     }
     100% {
-        right: 100%; /* Obstáculo se move até o lado esquerdo da tela */
+        right: 100%;
     }
 }
 
-/* Tela de Game Over */
 .game-over {
     display: none;
     position: absolute;
@@ -90,7 +82,6 @@ body {
     z-index: 20;
 }
 
-/* Estilo dos botões */
 button {
     padding: 10px 20px;
     font-size: 16px;
